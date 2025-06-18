@@ -50,9 +50,8 @@ networks:
   baota_net:
     external: true
 ```
-
 2. **Erstelle die Datei `.env`:**
-´´´.env
+```env
 VERSION=1.1.11
 CONTAINER_NAME=CONTAINER_NAME
 RUSTDESK_HOST_ADDR=
@@ -65,7 +64,7 @@ HOST_IP=0.0.0.0
 CPUS=0
 MEMORY_LIMIT=0MB
 APP_PATH=/data/rustdesk/rustdesk_eREW
-
+```
 
 🔐 Hinweis: Ersetze YOUR.SERVER.IP durch die öffentliche IP-Adresse oder Domain deines Servers.
 
