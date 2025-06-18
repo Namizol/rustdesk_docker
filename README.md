@@ -55,4 +55,4 @@ networks:
 | Dienst | Port | Beschreibung |
 |--------|--------------|-------|
 | **hbbs** | `21115` | Relay-Server (TCP) |
-| **BroadcastControl** | Eine selbstgehostete Webradio-Plattform mit AzuraCast und Docker. | `Docker` · `AzuraCast` · `NGINX` |
+|  | `21116` | NAT-Punch (UDP) |
