@@ -56,3 +56,14 @@ networks:
 |--------|--------------|-------|
 | **hbbs** | `21115` | Relay-Server (TCP) |
 |  | `21116` | NAT-Punch (UDP) |
+|  | `21118` | HTTP Tunnel/Signal |
+| **hbbr** | `21117` | Rendezvous-Server (TCP) |
+
+🧪 Client-Einstellungen
+Starte den RustDesk-Client.
+
+Gehe zu Settings → ID/Relay Server.
+
+Trage deine IP oder Domain unter beiden Feldern ein.
+
+Optional: E2EE konfigurieren über Public/Private Key.
