@@ -59,7 +59,8 @@ networks:
 |  | `21118` | HTTP Tunnel/Signal |
 | **hbbr** | `21117` | Rendezvous-Server (TCP) |
 
-🧪 Client-Einstellungen
+
+## 🧪 Client-Einstellungen
 Starte den RustDesk-Client.
 
 Gehe zu Settings → ID/Relay Server.
@@ -67,3 +68,22 @@ Gehe zu Settings → ID/Relay Server.
 Trage deine IP oder Domain unter beiden Feldern ein.
 
 Optional: E2EE konfigurieren über Public/Private Key.
+
+## 🔧 Systembefehle
+```
+# Container starten
+docker compose up -d
+
+# Logs anzeigen
+docker compose logs -f
+
+# Container neustarten
+docker compose restart
+```
+
+## 🔐 Sicherheit & Weiteres
+Aktiviere SSH und Firewall für Serverhärtung.
+
+Setze Public-Key-Verschlüsselung für sichere Kommunikation.
+
+Optional: NGINX Reverse Proxy für Webzugriff auf 21118.
