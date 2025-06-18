@@ -10,7 +10,7 @@
 
 - Docker (v20+ empfohlen)
 - Docker Compose (v2+)
-- Offene Ports: `21115`, `21116`, `21117`, `21118`
+- Offene Ports: `21115`, `21116`, `21117`, `21118`, `21119`
 
 ---
 
