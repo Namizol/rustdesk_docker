@@ -75,7 +75,9 @@ APP_PATH=/data/rustdesk/rustdesk_eREW
 | **hbbs** | `21115` | Relay-Server (TCP) |
 |  | `21116` | NAT-Punch (UDP) |
 |  | `21118` | HTTP Tunnel/Signal |
+|  | `21119` | Webinterface / WebSocket Dienste ⚠️ |
 | **hbbr** | `21117` | Rendezvous-Server (TCP) |
+
 
 
 ## 🧪 Client-Einstellungen
