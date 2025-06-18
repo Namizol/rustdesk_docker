@@ -19,35 +19,54 @@
 1. **Erstelle die Datei `docker-compose.yml`:**
 
 ```yaml
-version: '3.8'
-
 services:
-  hbbs:
-    image: rustdesk/rustdesk-server:latest
-    container_name: rustdesk-hbbs
+  rustdesk_eREW:
+    image: rustdesk/rustdesk-server-s6:${VERSION}
+    #    container_name: ${CONTAINER_NAME}
+    deploy:
+      resources:
+        limits:
+          cpus: ${CPUS}
+          memory: ${MEMORY_LIMIT}
+    environment:
+        - RELAY=${RUSTDESK_HOST_ADDR}:${RUSTDESK_PORT_HBBR}
+        - ENCRYPTED_ONLY=1
     ports:
-      - "21115:21115"   # TCP
-      - "21116:21116"   # UDP
-      - "21118:21118"   # TCP/HTTP
-    command: hbbs -r YOUR.SERVER.IP
-    restart: unless-stopped
+        - ${HOST_IP}:${RUSTDESK_PORT_NAT}:21115
+        - ${HOST_IP}:${RUSTDESK_PORT_HBBS}:21116
+        - ${HOST_IP}:${RUSTDESK_PORT_HBBS}:21116/udp
+        - ${HOST_IP}:${RUSTDESK_PORT_HBBR}:21117
+        - ${HOST_IP}:${RUSTDESK_PORT_WEB_CLIENT_1}:21118
+        - ${HOST_IP}:${RUSTDESK_PORT_WEB_CLIENT_2}:21119
+    restart: always
+    volumes:
+        - ${APP_PATH}/data:/data
+    labels:
+      createdBy: "bt_apps"
     networks:
-      - rustdesk-net
-
-  hbbr:
-    image: rustdesk/rustdesk-server:latest
-    container_name: rustdesk-hbbr
-    ports:
-      - "21117:21117"   # TCP
-    command: hbbr
-    restart: unless-stopped
-    networks:
-      - rustdesk-net
+      - baota_net
 
 networks:
-  rustdesk-net:
-    driver: bridge
+  baota_net:
+    external: true
 ```
+
+2. **Erstelle die Datei `.env`:**
+´´´.env
+VERSION=1.1.11
+CONTAINER_NAME=CONTAINER_NAME
+RUSTDESK_HOST_ADDR=
+RUSTDESK_PORT_NAT=21115
+RUSTDESK_PORT_HBBS=21116
+RUSTDESK_PORT_HBBR=21117
+RUSTDESK_PORT_WEB_CLIENT_1=21118
+RUSTDESK_PORT_WEB_CLIENT_2=21119
+HOST_IP=0.0.0.0
+CPUS=0
+MEMORY_LIMIT=0MB
+APP_PATH=/data/rustdesk/rustdesk_eREW
+
+
 🔐 Hinweis: Ersetze YOUR.SERVER.IP durch die öffentliche IP-Adresse oder Domain deines Servers.
 
 ## 📁 Serverdienste
